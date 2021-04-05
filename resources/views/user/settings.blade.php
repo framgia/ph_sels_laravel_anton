@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -18,17 +17,15 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            {{-- <form enctype="multipart/form-data" action="/users/settings" method="post"> --}}
                             <form enctype="multipart/form-data" action="{{ route('user.updateAvatar')}}" method="post">
                                 @csrf
                                 @method('PUT')
                                 <input type="file" name="avatar" id="avatar">
+                                <div class="modal-footer">
+                                    <input class="btn btn-primary" type="submit" value="Update Avatar">
+                                </div>
+                            </form>
                         </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <input class="btn btn-primary" type="submit" value="Update Avatar">
-                        </div>
-                        </form>
                     </div>
                 </div>
             </div>
