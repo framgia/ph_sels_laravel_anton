@@ -5,13 +5,10 @@
     <div class="row justify-content-center">
         <div class="col-md-2 ">
             <img src="{{asset("uploads/avatars").'/'.Auth::user()->avatar}}" class="card-img-top" alt="...">
-            <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary btn-block my-4" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
                 Update Avatar
             </button>
-
-            <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
@@ -26,7 +23,6 @@
                                 @csrf
                                 @method('PUT')
                                 <input type="file" name="avatar" id="avatar">
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -50,8 +46,4 @@
         </div>
     </div>
 </div>
-
-
-
-
 @endsection

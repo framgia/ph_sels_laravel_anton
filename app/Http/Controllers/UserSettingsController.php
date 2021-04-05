@@ -23,6 +23,7 @@ class UserSettingsController extends Controller
             $user->avatar = $fileName;
             $user->save();
         }
+
         return $this->index();
     }
 }
