@@ -8,9 +8,9 @@
                 <div class="card-header">{{ __('User Settings')}}</div>
                 <div class="card-body">
                     <div class="card-body">
-                        @if (session('error'))
+                        @if (session()->get('error'))
                         <p class="text-danger">
-                            {{ session('error')}}
+                           {{ session()->get('error')}}
                         </p>
                         @endif
                         @if (session()->get('message'))
