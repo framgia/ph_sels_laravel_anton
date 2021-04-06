@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserSettingsController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +22,5 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/user/settings', [UserSettingsController::class, 'index'])->name('user.settings');
+Route::put('/user/settings/updateAvatar', [UserSettingsController::class, 'updateAvatar'])->name('user.updateAvatar');
