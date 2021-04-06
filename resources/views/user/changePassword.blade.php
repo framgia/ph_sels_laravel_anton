@@ -9,14 +9,14 @@
                 <div class="card-body">
                     <div class="card-body">
                         @if (session()->get('error'))
-                        <p class="text-danger">
-                           {{ session()->get('error')}}
-                        </p>
+                            <p class="text-danger">
+                            {{ session()->get('error')}}
+                            </p>
                         @endif
                         @if (session()->get('message'))
-                        <p class="text-success">
-                            {{ session()->get('message')}}
-                        </p>
+                            <p class="text-success">
+                                {{ session()->get('message')}}
+                            </p>
                         @endif
                         <form action="{{route('user.updatePassword')}}" method="post">
                             @csrf
@@ -27,7 +27,11 @@
                                 <label for="current_password">Current Password</label>
                             </div>
                             <div class="form-floating mb-3">
-                                <input type="password" class="form-control" name="new_password" id="new_password">
+                                <input
+                                    type="password"
+                                    class="form-control"
+                                    name="new_password"
+                                    id="new_password">
                                 <label for=" new_password">New Password</label>
                             </div>
                             <div class="form-floating mb-3">

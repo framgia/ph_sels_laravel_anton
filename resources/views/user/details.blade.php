@@ -8,7 +8,6 @@
                 <div class="card-header">{{ __('User Settings')}}</div>
                 <div class="card-body">
                     <div class="card-body">
-
                         <form action="{{route('user.updateDetails')}}" method="post">
                             @csrf
                             @method('PUT')
@@ -33,5 +32,4 @@
         </div>
     </div>
 </div>
-
 @endsection
