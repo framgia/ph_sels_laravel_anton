@@ -9,15 +9,15 @@
                 alt="..."
             >
             <button type="button" class="btn btn-primary btn-block my-4" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
+                data-bs-target="#avatarModal">
                 Update Avatar
             </button>
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+            <div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Update Avatar</h5>
+                            <h5 class="modal-title" id="avatarModalLabel">Update Avatar</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
@@ -36,11 +36,13 @@
         </div>
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">{{ $user->name }}</div>
+                <div class="card-header">{{ __('User Settings')}}</div>
                 <div class="card-body">
                     <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
+                        <h5 class="card-title">{{ $user->name }}</h5>
                         <p class="card-text">{{ $user->email }}</p>
+                        <a href="{{ route('user.details') }}">Update Details</a>
+                        <a href="{{ route('user.changePassword') }}">Update Password</a>
                     </div>
                 </div>
             </div>
