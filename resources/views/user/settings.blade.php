@@ -3,7 +3,11 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-2 ">
-            <img src="{{asset("uploads/avatars").'/'.Auth::user()->avatar}}" class="card-img-top" alt="...">
+            <img
+                src="{{ ('/storage/uploads/avatars/'.Auth::user()->avatar) }}"
+                class="card-img-top"
+                alt="..."
+            >
             <button type="button" class="btn btn-primary btn-block my-4" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
                 Update Avatar
