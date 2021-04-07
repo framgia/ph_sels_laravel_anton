@@ -6,7 +6,7 @@
             <img
                 src="{{ ('/storage/uploads/avatars/'.Auth::user()->avatar) }}"
                 class="card-img-top"
-                alt="..."
+                alt="{{Auth::user()->avatar}}"
             >
             <button type="button" class="btn btn-primary btn-block my-4" data-bs-toggle="modal"
                 data-bs-target="#avatarModal">
