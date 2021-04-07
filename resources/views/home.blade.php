@@ -56,7 +56,9 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <p class="card-text">{{$user->name }}</p>
+                            <p class="card-text">
+                                <a href="{{ route('user.show',$user)}}">{{$user->name }}</a>
+                            </p>
                         </div>
                         <form action="{{route(!in_array($user->id,$followUser)?"user.follow":"user.unfollow",$user)}}" method="post">
                             @csrf

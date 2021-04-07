@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\DB;
+use function PHPUnit\Framework\returnSelf;
 
 class User extends Authenticatable
 {
@@ -58,6 +60,16 @@ class User extends Authenticatable
 
     public function follows()
     {
-        return $this->belongsToMany(User::class,'follows','user_id','following_user_id')->withTimestamps();
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'following_user_id')->withTimestamps();
+    }
+
+    public function followers()
+    {
+        return Follows::where('following_user_id','=',$this->id)->get()->count();
+    }
+
+    public function following()
+    {
+        return $this->follows()->count();
     }
 }
