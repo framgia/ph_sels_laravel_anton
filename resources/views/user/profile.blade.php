@@ -16,6 +16,13 @@
                     <p>{{ $user->following() }}</p>
                     Following
                 </div>
+                @if ($user->id != Auth::id())
+                <form action="{{route(!in_array($user->id,$followUser)?"user.follow":"user.unfollow",$user)}}" method="post">
+                    @csrf
+                    <input class="btn" type="submit" value="{{!in_array($user->id,$followUser)?"Follow":"unfollow"}}">
+                </form>
+                @endif
+                <a class="btn btn-primary btn-block mt-2" href="">Learned Words</a>
             </div>
             <div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel"
                 aria-hidden="true">
