@@ -10,6 +10,10 @@ class UserController extends Controller
 {
     public function index()
     {
-       return view('home',["users"=> User::where('id','!=',Auth::user()->id)->get()]);
+        return view('home', [
+            "users" => User::all()->except(Auth::id()),
+            "authUser" => Auth::user(),
+            "followUser" => Auth::user()->follows->pluck('id')->toArray()
+        ]);
     }
 }
