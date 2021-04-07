@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserSettingsController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserFollowController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [UserController::class, 'index'])->name('home');
 Route::get('/user/settings', [UserSettingsController::class, 'index'])->name('user.settings');
 Route::put('/user/settings/updateAvatar', [UserSettingsController::class, 'updateAvatar'])->name('user.updateAvatar');
 
@@ -30,3 +32,6 @@ Route::put('/users/settings/updatePassword',  [UserSettingsController::class, 'u
 
 Route::get('/users/settings/userDetails',  [UserSettingsController::class, 'userDetails'])->name('user.details');
 Route::put('/user/settings/updateDetails', [UserSettingsController::class, 'updateDetails'])->name('user.updateDetails');
+
+Route::post('/follow/{user}',[UserFollowController::class, 'store'])->name('user.follow');
+Route::post('/unfollow/{user}',[UserFollowController::class, 'destroy'])->name('user.unfollow');
