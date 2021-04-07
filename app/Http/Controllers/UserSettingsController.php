@@ -62,6 +62,9 @@ class UserSettingsController extends Controller
         if (strcmp($request->get('current_password'), $request->get('new_password')) == 0) {
             return back()->with('error', 'Your current password cannot be same with the new password');
         }
+        if (!strcmp($request->get('new_password'), $request->get('new_password_confirmation')) == 0) {
+            return back()->with('error', 'New password must be the same with Confirm password');
+        }
         //Validate the Password.
         $request->validate([
             'current_password' => 'required',
