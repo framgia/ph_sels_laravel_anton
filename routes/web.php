@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserSettingsController;
@@ -33,7 +34,15 @@ Route::put('/users/settings/updatePassword',  [UserSettingsController::class, 'u
 Route::get('/users/settings/userDetails',  [UserSettingsController::class, 'userDetails'])->name('user.details');
 Route::put('/users/settings/updateDetails', [UserSettingsController::class, 'updateDetails'])->name('user.updateDetails');
 
-Route::post('/follow/{user}',[UserFollowController::class, 'store'])->name('user.follow');
-Route::post('/unfollow/{user}',[UserFollowController::class, 'destroy'])->name('user.unfollow');
+Route::post('/follow/{user}', [UserFollowController::class, 'store'])->name('user.follow');
+Route::post('/unfollow/{user}', [UserFollowController::class, 'destroy'])->name('user.unfollow');
 
-Route::get('users/{user}', [UserController::class, 'show'])->name('user.show');;
+Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');;
+
+Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
+Route::post('/category',[CategoryController::class, 'store'])->name('category.store');
+Route::get('/category/create',[CategoryController::class, 'create'])->name('category.create');
+Route::get('/category/{category}',[CategoryController::class, 'show'])->name('category.show');
+Route::get('/category/{category}/edit',[CategoryController::class, 'edit'])->name('category.edit');
+Route::put('/category/{category}', [CategoryController::class, 'update'])->name('category.update');
+Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
