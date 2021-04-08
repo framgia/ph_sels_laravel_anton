@@ -12,13 +12,13 @@ class UserFollowController extends Controller
     {
         Auth::user()->follow($user);
 
-        return redirect()->route('home');
+        return redirect()->back();
     }
 
     public function destroy(User $user)
     {
         Auth::user()->unfollow($user);
 
-        return redirect()->route('home');
+        return redirect()->back();
     }
 }

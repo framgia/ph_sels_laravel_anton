@@ -16,4 +16,12 @@ class UserController extends Controller
             "followUser" => Auth::user()->follows->pluck('id')->toArray()
         ]);
     }
+
+    public function show(User $user)
+    {
+        return view('user.profile', [
+            "user" => User::find($user->id),
+            "followUser" => Auth::user()->follows->pluck('id')->toArray()
+        ]);
+    }
 }

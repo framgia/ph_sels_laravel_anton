@@ -33,7 +33,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ route('home') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button
@@ -69,6 +69,16 @@
                         </li>
                         @endif
                         @else
+                        @auth
+                        <li class="nav-item">
+                            <a
+                                class="nav-link"
+                                href="{{route('user.show',Auth::user())}}"
+                            >
+                                {{ Auth::user()->name }}
+                            </a>
+                        </li>
+                        @endauth
                         <li class="nav-item dropdown">
                             <a
                                 id="navbarDropdown"
@@ -80,15 +90,17 @@
                                 aria-expanded="false"
                                 v-pre
                                 >
-                                {{ Auth::user()->name }}
                             </a>
                             <div
                                 class="dropdown-menu dropdown-menu-right"
                                 aria-labelledby="navbarDropdown"
                             >
-                                <a class="dropdown-item" href="{{ route('user.settings') }}" ">
+                                <a
+                                    class="dropdown-item"
+                                    href="{{ route('user.settings') }}"
+                                >
                                         {{ __('Settings') }}
-                                    </a>
+                                </a>
                                     <a
                                         class=" dropdown-item"
                                         href="{{ route('logout') }}"
