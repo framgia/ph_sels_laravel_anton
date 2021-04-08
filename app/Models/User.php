@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     public function followers()
     {
-        return Follows::where('following_user_id','=',$this->id)->get()->count();
+        return Follows::where('following_user_id',$this->id)->get()->count();
     }
 
     public function following()
@@ -75,6 +75,6 @@ class User extends Authenticatable
 
     public function followersHome()
     {
-        return Follows::where('following_user_id','=',$this->id)->get();
+        return Follows::where('following_user_id',$this->id)->get();
     }
 }
