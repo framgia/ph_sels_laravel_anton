@@ -3,13 +3,14 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-2 ">
-            <img src="{{ url('/storage/uploads/avatars/'.$user->avatar) }}" class="card-img-top"
+            <img
+                src="{{ url('/storage/uploads/avatars/'.$user->avatar) }}"
+                class="card-img-top"
                 alt="{{$user->avatar}}">
             <hr>
             <div class="row text-center">
                 <div class="col">
-                    <p> {{ $user->followers()}}
-                    </p>
+                    <p>{{ $user->followers()}}</p>
                     Followers
                 </div>
                 <div class="col">
@@ -17,10 +18,12 @@
                     Following
                 </div>
                 @if ($user->id != Auth::id())
-                <form action="{{route(!in_array($user->id,$followUser)?"user.follow":"user.unfollow",$user)}}" method="post">
-                    @csrf
-                    <input class="btn" type="submit" value="{{!in_array($user->id,$followUser)?"Follow":"unfollow"}}">
-                </form>
+                    <form
+                        action="{{route(!in_array($user->id,$followUser)?"user.follow":"user.unfollow",$user)}}"
+                        method="post">
+                            @csrf
+                            <input class="btn" type="submit" value="{{!in_array($user->id,$followUser)?"Follow":"unfollow"}}">
+                    </form>
                 @endif
                 <a class="btn btn-primary btn-block mt-2" href="">Learned Words</a>
             </div>

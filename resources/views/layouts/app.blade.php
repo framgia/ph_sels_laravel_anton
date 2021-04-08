@@ -71,7 +71,12 @@
                         @else
                         @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="{{route('user.show',Auth::user())}}"> {{ Auth::user()->name }}</a>
+                            <a
+                                class="nav-link"
+                                href="{{route('user.show',Auth::user())}}"
+                            >
+                                {{ Auth::user()->name }}
+                            </a>
                         </li>
                         @endauth
                         <li class="nav-item dropdown">
