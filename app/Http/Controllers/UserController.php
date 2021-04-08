@@ -11,7 +11,7 @@ class UserController extends Controller
     public function index()
     {
         return view('home', [
-            "users" => User::all()->except(Auth::id()),
+            "users" => User::limit(6)->inRandomOrder()->get()->except(Auth::id()),
             "authUser" => Auth::user(),
             "followUser" => Auth::user()->follows->pluck('id')->toArray()
         ]);
