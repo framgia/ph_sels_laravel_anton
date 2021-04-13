@@ -17,4 +17,9 @@ class Word extends Model
     {
         return $this->belongsToMany(Choice::class, 'word_choices', 'word_id', 'choice_id');
     }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

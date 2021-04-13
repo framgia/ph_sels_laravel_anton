@@ -13,7 +13,7 @@ class WordsController extends Controller
     public function index(Category $category)
     {
         return view('words.index', [
-            "words" => Word::all(),
+            "words" => Category::findOrFail($category->id)->words,
             "category" => Category::findOrFail($category->id)
         ]);
     }
@@ -27,6 +27,7 @@ class WordsController extends Controller
     {
         $word = new Word();
         $word->word = $request->input('word');
+        $word->category_id = $category->id;
         $word->save();
 
         $correct_choice = new Choice();
