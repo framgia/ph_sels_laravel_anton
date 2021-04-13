@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFollowController;
+use App\Http\Controllers\WordsController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -40,9 +41,14 @@ Route::post('/unfollow/{user}', [UserFollowController::class, 'destroy'])->name(
 Route::get('/users/{user}', [UserController::class, 'show'])->name('user.show');;
 
 Route::get('/category', [CategoryController::class, 'index'])->name('category.index');
-Route::post('/category',[CategoryController::class, 'store'])->name('category.store');
-Route::get('/category/create',[CategoryController::class, 'create'])->name('category.create');
-Route::get('/category/{category}',[CategoryController::class, 'show'])->name('category.show');
-Route::get('/category/{category}/edit',[CategoryController::class, 'edit'])->name('category.edit');
+Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
+Route::get('/category/create', [CategoryController::class, 'create'])->name('category.create');
+Route::get('/category/{category}', [CategoryController::class, 'show'])->name('category.show');
+Route::get('/category/{category}/edit', [CategoryController::class, 'edit'])->name('category.edit');
 Route::put('/category/{category}', [CategoryController::class, 'update'])->name('category.update');
 Route::delete('/category/{category}', [CategoryController::class, 'destroy'])->name('category.destroy');
+
+Route::get('/category/{category}/words', [WordsController::class, 'index'])->name('words.index');
+Route::post('/category/{category}/words', [WordsController::class, 'store'])->name('words.store');
+Route::get('/category/{category}/words/create', [WordsController::class, 'create'])->name('words.create');
+Route::delete('/category/{category}/words/{word}', [WordsController::class, 'destroy'])->name('words.destroy');

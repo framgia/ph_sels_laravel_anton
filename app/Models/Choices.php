@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Choices extends Model
 {
     use HasFactory;
+    protected $fillable = [
+        'word',
+    ];
+    public function wordParent()
+    {
+        return $this->belongsToMany(Words::class, 'word_choices', 'choice_id', 'word_id');
+    }
 }
