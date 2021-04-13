@@ -2,26 +2,28 @@
 
 @section('content')
     <div class="container">
-        <h1 class="display-4">{{ __('Categories') }}</h1>
-        <a class="btn btn-primary" href="{{ route('category.create') }}">{{ __('Add Category') }}</a>
+        <h1 class="display-4">{{ __('Words') }}</h1>
+        <a class="btn btn-primary" href="{{ route('words.create',$category) }}">{{ __('Add Word') }}</a>
         <div class="row">
             <div class="col py-3">
                 <table class="table table-striped">
                     <thead>
                         <tr>
-                            <th scope="col">Title</th>
-                            <th scope="col">Description</th>
+                            <th scope="col">Word</th>
+                            <th scope="col">Correct Choice</th>
+                            <th scope="col">Choices</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @forelse ($categories as $category)
+                        @forelse ($words as $word)
                             <tr>
-                                <td>{{ $category->title }}</td>
-                                <td>{{ $category->description }}</td>
+                                <td>{{ $word->word }}</td>
+                                <td>{{ $word->wordChoices->pluck('choice')->first() }}</td>
                                 <td>
-                                    <a class="btn btn-outline-primary" href="{{ route('words.index',$category) }}">Add word</a>
-                                    <a class="btn btn-outline-primary" href="{{ route('category.show',$category) }}">Edit</a>
+                                    {{$word->wordChoices->pluck('choice')->implode(', ')}}
+                                </td>
+                                <td>
                                     <a
                                         class="btn btn-outline-danger"
                                         type="button"
@@ -54,9 +56,9 @@
                                                     </button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p>Do you want to delete <strong>{{ $category->title }}</strong> ?</p>
+                                                    <p>Do you want to delete <strong>{{ $word->word }}</strong> ?</p>
                                                     <form
-                                                        action="{{ route('category.destroy',$category) }}"
+                                                        action="{{ route('words.destroy',[$category,$word]) }}"
                                                         method="post">
                                                         @csrf
                                                         @method('DELETE')
@@ -83,7 +85,7 @@
                         @empty
                             <tr>
                                 <td colspan="3" class="text-center">
-                                    <h2>{{ __('Category is empty') }}</h2>
+                                    <h2>{{ __('Word List is empty') }}</h2>
                                 </td>
                             </tr>
                         @endforelse
