@@ -20,22 +20,22 @@ class CreateWordChoicesTable extends Migration
             $table->foreignId('correct_choice_id')->nullable();
 
             $table->foreign('word_id')
-            ->references('id')
-            ->on('words')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+                ->references('id')
+                ->on('words')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->foreign('choice_id')
-            ->references('id')
-            ->on('choices')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+                ->references('id')
+                ->on('choices')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
 
             $table->foreign('correct_choice_id')
-            ->references('id')
-            ->on('choices')
-            ->onDelete('cascade')
-            ->onUpdate('cascade');
+                ->references('id')
+                ->on('choices')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }
