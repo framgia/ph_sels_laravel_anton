@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return view('category.index', ["categories" => Categories::all()]);
+        return view('category.index', ["categories" => Category::all()]);
     }
 
     public function store()
     {
-        $category = new Categories($this->categoryValidation());
+        $category = new Category($this->categoryValidation());
         $category->save();
 
         return $this->index();
@@ -25,19 +25,19 @@ class CategoryController extends Controller
         return view('category.create');
     }
 
-    public function show(Categories $category)
+    public function show(Category $category)
     {
-        return view('category.edit', ["category" => Categories::findOrFail($category->id)]);
+        return view('category.edit', ["category" => Category::findOrFail($category->id)]);
     }
 
-    public function update(Categories $category)
+    public function update(Category $category)
     {
         $category->update($this->categoryValidation());
 
         return $this->index();
     }
 
-    public function destroy(Categories $category)
+    public function destroy(Category $category)
     {
         $category->delete();
 

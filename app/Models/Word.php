@@ -4,9 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\DB;
 
-class Words extends Model
+class Word extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -16,6 +15,6 @@ class Words extends Model
 
     public function wordChoices()
     {
-        return $this->belongsToMany(Choices::class, 'word_choices', 'word_id', 'choice_id');
+        return $this->belongsToMany(Choice::class, 'word_choices', 'word_id', 'choice_id');
     }
 }

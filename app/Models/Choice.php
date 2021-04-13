@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Choices extends Model
+class Choice extends Model
 {
     use HasFactory;
     protected $fillable = [
@@ -13,6 +13,6 @@ class Choices extends Model
     ];
     public function wordParent()
     {
-        return $this->belongsToMany(Words::class, 'word_choices', 'choice_id', 'word_id');
+        return $this->belongsToMany(Word::class, 'word_choices', 'choice_id', 'word_id');
     }
 }

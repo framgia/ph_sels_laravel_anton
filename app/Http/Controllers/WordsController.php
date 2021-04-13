@@ -2,34 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categories;
-use App\Models\Choices;
-use App\Models\Words;
+use App\Models\Category;
+use App\Models\Choice;
+use App\Models\Word;
 use Illuminate\Http\Request;
 use App\Models\WordChoice;
 
 class WordsController extends Controller
 {
-    public function index(Categories $category)
+    public function index(Category $category)
     {
         return view('words.index', [
-            "words" => Words::all(),
-            "category" => Categories::findOrFail($category->id)
+            "words" => Word::all(),
+            "category" => Category::findOrFail($category->id)
         ]);
     }
 
-    public function create(Categories $category)
+    public function create(Category $category)
     {
-        return view('words.create', ["category" => Categories::findOrFail($category->id)]);
+        return view('words.create', ["category" => Category::findOrFail($category->id)]);
     }
 
-    public function store(Categories $category, Request $request)
+    public function store(Category $category, Request $request)
     {
-        $word = new Words();
+        $word = new Word();
         $word->word = $request->input('word');
         $word->save();
 
-        $correct_choice = new Choices();
+        $correct_choice = new Choice();
         $correct_choice->choice = $request->input('correct_choice');
         $correct_choice->save();
 
@@ -41,7 +41,7 @@ class WordsController extends Controller
 
         foreach ($request['choices'] as $value) {
             $wordChoices = new WordChoice();
-            $choices = new Choices();
+            $choices = new Choice();
             $choices->choice = $value;
             $choices->save();
             $wordChoices->word_id = $word->id;
@@ -50,12 +50,12 @@ class WordsController extends Controller
         }
 
         return redirect()->route('words.index', [
-            "words" => Words::all(),
-            "category" => Categories::findOrFail($category->id)
+            "words" => Word::all(),
+            "category" => Category::findOrFail($category->id)
         ]);
     }
 
-    public function destroy(Categories $category, Words $word)
+    public function destroy(Category $category, Word $word)
     {
         $word->delete();
 
