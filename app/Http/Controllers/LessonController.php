@@ -12,6 +12,7 @@ class LessonController extends Controller
     public function index(Category $category)
     {
         session(['word_count' => 0]);
+
         return view('lesson.index', [
             "category" => $category,
         ]);
