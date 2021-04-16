@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\LessonController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserSettingsController;
@@ -52,3 +53,7 @@ Route::get('/category/{category}/words', [WordsController::class, 'index'])->nam
 Route::post('/category/{category}/words', [WordsController::class, 'store'])->name('words.store');
 Route::get('/category/{category}/words/create', [WordsController::class, 'create'])->name('words.create');
 Route::delete('/category/{category}/words/{word}', [WordsController::class, 'destroy'])->name('words.destroy');
+
+Route::get('/category/{category}/lesson', [LessonController::class, 'index'])->name('lesson.index');
+Route::post('/category/{category}/lesson', [LessonController::class, 'store'])->name('lesson.store');
+Route::get('/category/{category}/lesson/result', [LessonController::class, 'result'])->name('lesson.result');

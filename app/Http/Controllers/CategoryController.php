@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Lesson;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
     public function index()
     {
-        return view('category.index', ["categories" => Category::all()]);
+        return view('category.index', [
+            "categories" => Category::all(),
+        ]);
     }
 
     public function store()

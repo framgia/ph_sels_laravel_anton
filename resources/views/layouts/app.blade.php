@@ -70,13 +70,11 @@
                         @endif
                         @else
                         @auth
-                        @if (Auth::user()->role_id == 2)
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('category.index') }}">
                                     {{ __('Category') }}
                                 </a>
                             </li>
-                        @endif
                             <li class="nav-item">
                                 <a
                                     class="nav-link"
