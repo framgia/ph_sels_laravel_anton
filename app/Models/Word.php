@@ -13,7 +13,7 @@ class Word extends Model
         'correct_choice_id',
     ];
 
-    public function wordChoices()
+    public function choices()
     {
         return $this->belongsToMany(Choice::class, 'word_choices', 'word_id', 'choice_id');
     }
