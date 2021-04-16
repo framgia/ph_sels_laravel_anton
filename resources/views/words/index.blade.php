@@ -19,9 +19,9 @@
                     @forelse ($words as $word)
                         <tr>
                             <td>{{ $word->word }}</td>
-                            <td>{{ $word->wordChoices->pluck('choice')->first() }}</td>
+                            <td>{{ $word->choices->pluck('choice')->first() }}</td>
                             <td>
-                                {{$word->wordChoices->pluck('choice')->implode(', ')}}
+                                {{$word->choices->pluck('choice')->implode(', ')}}
                             </td>
                             <td>
                                 <a class="btn btn-outline-danger" type="button" data-bs-toggle="modal"
