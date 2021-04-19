@@ -21,11 +21,16 @@ class Category extends Model
 
     public function lessons()
     {
-        return Lesson::where('category_id',$this->id)->where('user_id',Auth::user()->id);
+        return $this->hasMany(Lesson::class)->where('user_id',Auth::user()->id)->get();
     }
 
     public function isTakenByUser()
     {
         return $this->lessons()->count() > 0;
+    }
+
+    public function lesson()
+    {
+        return $this->hasMany(Lesson::class);
     }
 }
