@@ -26,7 +26,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [UserController::class, 'index'])->name('home');
+Route::get('/home', [UserController::class, 'home'])->name('home');
 Route::get('/users/settings', [UserSettingsController::class, 'index'])->name('user.settings');
 Route::put('/users/settings/updateAvatar', [UserSettingsController::class, 'updateAvatar'])->name('user.updateAvatar');
 
@@ -57,3 +57,5 @@ Route::delete('/category/{category}/words/{word}', [WordsController::class, 'des
 Route::get('/category/{category}/lesson', [LessonController::class, 'index'])->name('lesson.index');
 Route::post('/category/{category}/lesson', [LessonController::class, 'store'])->name('lesson.store');
 Route::get('/category/{category}/lesson/result', [LessonController::class, 'result'])->name('lesson.result');
+
+Route::get('/users', [UserController::class, 'index'])->name('user.index');
