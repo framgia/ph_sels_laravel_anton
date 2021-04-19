@@ -11,14 +11,14 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    public function index()
+    public function home()
     {
         return view('home', [
-            "users" => User::limit(6)->inRandomOrder()->get()->except(Auth::id()),
+            "users" => User::limit(6)->inRandomOrder()->get()->except(Auth::id())->whereNotIn('role_id',2),
             "authUser" => Auth::user(),
             "followUser" => Auth::user()->follows->pluck('id')->toArray(),
-            "categories"=> Category::all(),
-            "user_mid"=> User::all()
+            "categories" => Category::all(),
+            "user_mid" => User::all()
         ]);
     }
 
@@ -28,7 +28,15 @@ class UserController extends Controller
             "user" => User::find($user->id),
             "followUser" => Auth::user()->follows->pluck('id')->toArray(),
             "lessons" => $user->lessons,
-            "categories"=> Category::all(),
+            "categories" => Category::all(),
+        ]);
+    }
+
+    public function index()
+    {
+        return view('user.index', [
+            "users" => User::all()->except(Auth::id())->whereNotIn('role_id',2),
+            "followed_users" => Auth::user()->follows
         ]);
     }
 }
