@@ -8,6 +8,7 @@ use App\Http\Controllers\UserSettingsController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserFollowController;
 use App\Http\Controllers\WordsController;
+use App\Http\Controllers\WordsLearnedController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -59,3 +60,4 @@ Route::post('/category/{category}/lesson', [LessonController::class, 'store'])->
 Route::get('/category/{category}/lesson/result', [LessonController::class, 'result'])->name('lesson.result');
 
 Route::get('/users', [UserController::class, 'index'])->name('user.index');
+Route::get('/users/words/{user}', [WordsLearnedController::class, 'index'])->name('user.words.index');

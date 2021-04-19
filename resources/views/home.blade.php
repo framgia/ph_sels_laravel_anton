@@ -13,7 +13,7 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{$authUser->name }}</h5>
-                                <p class="card-text"> <a href="http://">Learned Words</a></p>
+                                <p class="card-text"> <a href="{{ route('user.words.index',$authUser)}}">Learned Words</a></p>
                                 <p class="card-text"> <a href="http://">Learned Lessons</a></p>
                             </div>
                         </div>

@@ -22,7 +22,7 @@
                         <input class="btn" type="submit" value="{{!in_array($user->id,$followUser)?"Follow":"unfollow"}}">
                     </form>
                     @endif
-                    <a class="btn btn-primary btn-block mt-2" href="">Learned Words</a>
+                    <a class="btn btn-primary btn-block mt-2" href="{{ route('user.words.index',$user)}}">Learned Words</a>
                 </div>
                 <div class="modal fade" id="avatarModal" tabindex="-1" aria-labelledby="avatarModalLabel"
                     aria-hidden="true">
