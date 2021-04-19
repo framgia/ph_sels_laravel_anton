@@ -76,4 +76,9 @@ class User extends Authenticatable
     {
         return Follow::where('following_user_id',$this->id)->get();
     }
+
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
 }

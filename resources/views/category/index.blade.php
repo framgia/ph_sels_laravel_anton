@@ -90,6 +90,7 @@
                             @endforelse
                         </tbody>
                     </table>
+                    {{ $categories->links() }}
                 </div>
             </div>
         @else
