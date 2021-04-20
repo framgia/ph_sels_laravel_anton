@@ -32,9 +32,15 @@ class LessonController extends Controller
         }
         $answer->save();
 
-        return view('lesson.index', [
-            "category" => $category,
-        ]);
+        if (count($category->words) > request()->session()->get('word_count')) {
+            return view('lesson.index', [
+                "category" => $category,
+            ]);
+        } else {
+            request()->session()->pull('word_count');
+
+            return $this->result($category);
+        }
     }
 
     public function result(Category $category)
