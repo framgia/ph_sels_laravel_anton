@@ -60,7 +60,7 @@
                                         <a
                                             href="{{ route('category.index') }}">{{ $categories->find($lesson->pluck('category_id')->first())->title }}</a>
                                     </p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text"><small class="text-muted">Last updated {{$lesson->pluck('created_at')->first()->diffForHumans()}}</small></p>
                                 </div>
                             </div>
                         </div>

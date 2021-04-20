@@ -31,10 +31,6 @@
                             @endforeach
                         </form>
                     </div>
-                @else
-                    <script>
-                        window.location ='{{route('lesson.result',$category)}}';
-                    </script>
                 @endif
             </div>
         </div>

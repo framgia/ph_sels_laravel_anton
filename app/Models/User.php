@@ -79,6 +79,6 @@ class User extends Authenticatable
 
     public function lessons()
     {
-        return $this->hasMany(Lesson::class);
+        return $this->hasMany(Lesson::class)->latest();
     }
 }

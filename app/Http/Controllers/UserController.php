@@ -13,12 +13,17 @@ class UserController extends Controller
 {
     public function home()
     {
+
+        $lessons = Lesson::groupBy('category_id', 'user_id')
+            ->selectRaw('sum(is_correct) as score,user_id,category_id')
+            ->latest('lessons.created_at')->get();
+
         return view('home', [
-            "users" => User::limit(6)->inRandomOrder()->get()->except(Auth::id())->whereNotIn('role_id',2),
+            "users" => User::limit(6)->inRandomOrder()->get()->except(Auth::id())->whereNotIn('role_id', 2),
             "authUser" => Auth::user(),
             "followUser" => Auth::user()->follows->pluck('id')->toArray(),
             "categories" => Category::all(),
-            "user_mid" => User::all()
+            "lessons" => $lessons
         ]);
     }
 
@@ -35,7 +40,7 @@ class UserController extends Controller
     public function index()
     {
         return view('user.index', [
-            "users" => User::all()->except(Auth::id())->whereNotIn('role_id',2),
+            "users" => User::all()->except(Auth::id())->whereNotIn('role_id', 2),
             "followed_users" => Auth::user()->follows
         ]);
     }
