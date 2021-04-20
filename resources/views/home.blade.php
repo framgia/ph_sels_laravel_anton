@@ -13,7 +13,8 @@
                         <div class="col-md-8">
                             <div class="card-body">
                                 <h5 class="card-title">{{$authUser->name }}</h5>
-                                <p class="card-text"> <a href="{{ route('user.words.index',$authUser)}}">Learned Words</a>
+                                <p class="card-text">
+                                    <a href="{{ route('user.words.index',$authUser)}}">Learned Words</a>
                                 </p>
                                 <p class="card-text"> <a href="http://">Learned Lessons</a></p>
                             </div>
@@ -31,8 +32,7 @@
                                         <a href="{{ route('user.show',$lesson->user) }}">{{ $lesson->user->name}}</a>
                                         learned {{ $lesson->score  }} out of
                                         {{ count($categories->find($lesson->category_id)->words) }} in
-                                        <a
-                                            href="{{ route('category.index') }}">{{ $categories->find($lesson->category_id)->title }}</a>
+                                        <a href="{{ route('category.index') }}">{{ $categories->find($lesson->category_id)->title }}</a>
                                     </p>
                                     <p class="card-text"><small class="text-muted">Last updated
                                             {{$lesson->user->lessons->pluck('created_at')->first()->diffForHumans()}}</small></p>

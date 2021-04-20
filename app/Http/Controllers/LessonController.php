@@ -38,6 +38,7 @@ class LessonController extends Controller
             ]);
         } else {
             request()->session()->pull('word_count');
+
             return $this->result($category);
         }
     }
